@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>ExamAudit ✨</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          animation: {
+            fade: "fadeIn 1s ease-in-out",
+            float: "float 6s ease-in-out infinite",
+          },
+          keyframes: {
+            fadeIn: {
+              "0%": { opacity: 0 },
+              "100%": { opacity: 1 },
+            },
+            float: {
+              "0%,100%": { transform: "translateY(0)" },
+              "50%": { transform: "translateY(-10px)" },
+            },
+          },
+        },
+      },
+    }
+  </script>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-fuchsia-900 flex items-center justify-center text-white">
+
+  <!-- Background glow -->
+  <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.12),_transparent_60%)]"></div>
+
+  <div class="relative bg-white/10 backdrop-blur-2xl p-10 rounded-3xl shadow-2xl w-[440px] animate-fade">
+
+    <h1 class="text-4xl font-bold text-center mb-3">
+      ExamAudit ✨
+    </h1>
+
+    <p class="text-center text-gray-300 mb-8">
+      AI-powered Examination Fairness & Transparency
+    </p>
+
+    <!-- Email -->
+    <div class="mb-4">
+      <label class="text-sm text-gray-300">Recipient Email</label>
+      <input
+        value="{{ session.email }}"
+        disabled
+        class="w-full mt-1 p-3 rounded-xl bg-white/20 border border-white/20 text-white"
+      >
+    </div>
+
+    <!-- Subject -->
+    <form method="post" action="/audit" class="space-y-6">
+
+      <div>
+        <label class="text-sm text-gray-300">Audit Scope</label>
+        <select name="subject"
+          class="w-full mt-1 p-3 rounded-xl bg-white/20 border border-white/20 text-white">
+          <option value="">Audit All Subjects</option>
+          <option value="Maths">Maths</option>
+          <option value="Physics">Physics</option>
+          <option value="Chemistry">Chemistry</option>
+        </select>
+      </div>
+
+      <button
+        class="w-full py-4 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl text-lg font-semibold shadow-xl hover:scale-[1.05] transition-all duration-300">
+        🚀 Run AI Audit
+      </button>
+
+    </form>
+
+    <div class="mt-8 text-center">
+      <a href="/history" class="text-blue-300 hover:underline">
+        View Audit History →
+      </a>
+    </div>
+
+  </div>
+
+</body>
+</html>

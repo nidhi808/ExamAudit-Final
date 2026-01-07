@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ExamAudit | Audit Trail</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-950 min-h-screen p-10 text-white">
+
+  <div class="flex justify-between mb-8">
+    <h2 class="text-4xl font-bold">Audit Trail</h2>
+    <a href="/clear-history"
+       onclick="return confirm('Delete all audit history?')"
+       class="bg-red-600 px-4 py-2 rounded-xl">
+      Clear All
+    </a>
+  </div>
+
+  <div class="space-y-4">
+    {% for r in records %}
+    <div class="bg-white/10 p-5 rounded-xl">
+      <div class="flex justify-between">
+        <span>{{ r[2] }} | {{ r[4] }} marks</span>
+        <span class="text-sm">{{ r[3] }}</span>
+      </div>
+      <p class="text-gray-300 text-sm mt-2">{{ r[5] }}</p>
+      <p class="text-xs text-gray-500 mt-1">{{ r[6] }}</p>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="mt-6">
+    <a href="/dashboard" class="text-blue-400 hover:underline">
+      ← Back
+    </a>
+  </div>
+
+  {% include "chatbot.html" %}
+</body>
+</html>

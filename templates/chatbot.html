@@ -1,0 +1,39 @@
+<div id="bot" class="fixed bottom-6 right-6">
+  <button onclick="toggleBot()" class="bg-indigo-600 text-white p-4 rounded-full">🤖</button>
+
+  <div id="chatbox" class="hidden bg-white text-black w-80 h-96 mt-2 rounded shadow-lg flex flex-col">
+    <div class="bg-indigo-600 text-white p-2">ExamBot</div>
+    <div id="messages" class="flex-1 p-2 overflow-y-auto text-sm"></div>
+
+    <form onsubmit="sendMessage(event)" class="p-2 border-t flex">
+      <input id="userInput" class="flex-1 border p-1" placeholder="Ask about results..." />
+      <button class="ml-2 text-indigo-600">Send</button>
+    </form>
+  </div>
+</div>
+
+<script>
+function toggleBot() {
+  document.getElementById("chatbox").classList.toggle("hidden")
+}
+
+async function sendMessage(e) {
+  e.preventDefault()
+  const input = document.getElementById("userInput")
+  const msg = input.value
+  if (!msg) return
+
+  const messages = document.getElementById("messages")
+  messages.innerHTML += `<p><b>You:</b> ${msg}</p>`
+
+  const res = await fetch("/chat", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({message: msg})
+  })
+
+  const data = await res.json()
+  messages.innerHTML += `<p class="text-indigo-600"><b>ExamBot:</b> ${data.reply}</p>`
+  input.value = ""
+}
+</script>

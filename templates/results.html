@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ExamAudit | Results</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-950 text-white min-h-screen p-10">
+
+  <h2 class="text-4xl font-bold mb-8">AI Audit Results</h2>
+
+  {% if results %}
+  <div class="grid md:grid-cols-2 gap-6">
+    {% for r in results %}
+    <div class="bg-white/10 p-6 rounded-2xl shadow-xl">
+      <div class="flex justify-between items-center mb-2">
+        <span class="text-lg font-semibold">{{ r.subject }}</span>
+        <span class="px-3 py-1 rounded-xl text-sm
+          {% if r.severity == 'High' %} bg-red-600
+          {% else %} bg-yellow-500 {% endif %}">
+          {{ r.severity }}
+        </span>
+      </div>
+
+      <p class="text-gray-300">Student ID: {{ r.student_id }}</p>
+      <p class="text-gray-300">Marks: {{ r.marks }}</p>
+
+      <p class="mt-4 text-sm text-gray-200">
+        {{ r.explanation }}
+      </p>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+    <p class="text-gray-400">No anomalies detected.</p>
+  {% endif %}
+
+  <div class="mt-10">
+    <a href="/dashboard" class="text-blue-400 hover:underline">
+      ← Back to Dashboard
+    </a>
+  </div>
+
+  {% include "chatbot.html" %}
+</body>
+</html>

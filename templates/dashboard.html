@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ExamAudit | Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-slate-950 to-slate-900 text-white min-h-screen p-10">
+
+  <div class="max-w-6xl mx-auto">
+
+    <div class="flex justify-between items-center mb-10">
+      <h2 class="text-4xl font-bold">AI Audit Dashboard</h2>
+      <span class="text-sm bg-white/10 px-4 py-2 rounded-xl">
+        {{ email }}
+      </span>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+
+      <!-- Audit Card -->
+      
+<div class="bg-white/10 p-8 rounded-2xl shadow-xl hover:scale-105 transition">
+  <h3 class="text-xl font-semibold mb-4">Run AI Audit</h3>
+  <p class="text-gray-300 mb-6">
+    Analyze exam data using statistical & AI fairness checks.
+  </p>
+
+  <form method="POST" action="/audit">
+    <button
+      type="submit"
+      class="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 font-semibold">
+      Start Audit
+    </button>
+  </form>
+</div>
+
+
+      <!-- History -->
+      <div class="bg-white/10 p-8 rounded-2xl shadow-xl hover:scale-105 transition">
+        <h3 class="text-xl font-semibold mb-4">Audit History</h3>
+        <p class="text-gray-300 mb-6">
+          Review past audits and ensure transparency.
+        </p>
+        <a href="/history"
+           class="block text-center py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700">
+          View History
+        </a>
+      </div>
+
+      <!-- Manual -->
+      <div class="bg-white/10 p-8 rounded-2xl shadow-xl hover:scale-105 transition">
+        <h3 class="text-xl font-semibold mb-4">Manual Review</h3>
+        <p class="text-gray-300 mb-6">
+          Submit marks manually for edge cases.
+        </p>
+        <a href="/manual">
+           <button class="btn">Manual Entry</button>
+        </a>
+
+      </div>
+
+    </div>
+  </div>
+
+  {% include "chatbot.html" %}
+</body>
+</html>

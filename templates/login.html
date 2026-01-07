@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>ExamAudit | AI Fairness Platform</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    select {
+      color: white;
+    }
+    select option {
+      background-color: #020617;
+      color: white;
+    }
+  </style>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          animation: {
+            float: "float 6s ease-in-out infinite",
+            fade: "fadeIn 1s ease-in-out",
+          },
+          keyframes: {
+            float: {
+              "0%,100%": { transform: "translateY(0px)" },
+              "50%": { transform: "translateY(-10px)" }
+            },
+            fadeIn: {
+              "0%": { opacity: 0 },
+              "100%": { opacity: 1 }
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-gradient-to-br from-[#020617] via-[#0f172a] to-[#1e293b] min-h-screen flex items-center justify-center text-white">
+
+  <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_#3b82f640,_transparent_60%)]"></div>
+
+  <div class="relative bg-white/10 backdrop-blur-2xl p-10 rounded-3xl shadow-2xl w-[440px] animate-fade">
+    
+    <h1 class="text-4xl font-extrabold text-center mb-2">
+      ExamAudit
+    </h1>
+    <p class="text-center text-gray-300 mb-8">
+      AI-powered Examination Fairness System
+    </p>
+
+    <form method="post" action="/login" class="space-y-4">
+
+      <input name="name"
+        placeholder="Full Name"
+        class="w-full p-3 rounded-xl bg-white/10 border border-white/20 focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+      <input name="email" required type="email"
+        placeholder="Email Address"
+        class="w-full p-3 rounded-xl bg-white/10 border border-white/20 focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+      <select name="role"
+        class="w-full p-3 rounded-xl bg-white/10 border border-white/20">
+        <option>Student</option>
+        <option>Teacher</option>
+        <option>Admin</option>
+      </select>
+
+      <select name="subject"
+        class="w-full p-3 rounded-xl bg-white/10 border border-white/20">
+        <option>Audit All Subjects</option>
+        <option>Maths</option>
+        <option>Physics</option>
+        <option>Chemistry</option>
+      </select>
+
+      <button
+        class="w-full mt-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:scale-105 transition-all shadow-lg">
+        Enter AI Dashboard →
+      </button>
+
+    </form>
+  </div>
+
+</body>
+</html>
